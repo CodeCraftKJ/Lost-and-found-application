@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using ItemManager.Models.LostItems;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using ItemManager.Models.LostItems;
 
-namespace ItemManager.Repositories.LostItemRepository
+namespace ItemManager.Repositories
 {
     public interface ILostItemRepository
     {
