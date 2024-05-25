@@ -1,10 +1,12 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using AutoMapper;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ItemManager.Data;
 using ItemManager.Repositories.LostItemRepository;
 using ItemManager.Repositories.FoundItemRepository;
 using ItemManager.Configuration;
 using ItemManager.Services;
+using ItemManager.Mapping;
 using ItemManager.Repositories;
 
 namespace ItemManager
@@ -22,6 +24,8 @@ namespace ItemManager
 
             services.AddScoped<ILostItemService, LostItemService>();
             services.AddScoped<IFoundItemService, FoundItemService>();
+
+            services.AddAutoMapper(typeof(MappingProfile));
         }
     }
 }
