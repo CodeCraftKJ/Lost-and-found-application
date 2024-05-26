@@ -2,7 +2,6 @@
 using ItemManager.Models.LostItems;
 using ItemManager.Models.FoundItems;
 using ItemManager.DTOs;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ItemManager.Mapping
 {
