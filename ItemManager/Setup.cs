@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 using ItemManager.Data;
 using ItemManager.Repositories.LostItemRepository;
 using ItemManager.Repositories.FoundItemRepository;
 using ItemManager.Services;
 using ItemManager.Mapping;
 using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
+using ItemManager.Repositories;
 
 namespace ItemManager
 {
@@ -33,8 +33,6 @@ namespace ItemManager
 
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
-
-            services.AddControllers();
         }
     }
 }

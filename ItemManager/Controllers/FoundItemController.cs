@@ -24,7 +24,7 @@ namespace ItemManager.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<FoundItemDTO>>> GetAllFoundItems()
         {
-            var items = await _foundItemService.GetAllFoundItemsAsync();
+            var items = await _foundItemService.GetAllAsync();
             var itemsDTO = _mapper.Map<IEnumerable<FoundItemDTO>>(items);
             return Ok(itemsDTO);
         }
@@ -32,7 +32,7 @@ namespace ItemManager.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<FoundItemDTO>> GetFoundItemById(int id)
         {
-            var item = await _foundItemService.GetFoundItemByIdAsync(id);
+            var item = await _foundItemService.GetByIdAsync(id);
             if (item == null)
             {
                 return NotFound();
@@ -45,7 +45,7 @@ namespace ItemManager.Controllers
         public async Task<ActionResult> AddFoundItem(FoundItemDTO itemDTO)
         {
             var item = _mapper.Map<FoundItem>(itemDTO);
-            await _foundItemService.AddFoundItemAsync(item);
+            await _foundItemService.AddAsync(item);
             return CreatedAtAction(nameof(GetFoundItemById), new { id = item.ItemId }, itemDTO);
         }
 
@@ -58,14 +58,14 @@ namespace ItemManager.Controllers
             }
 
             var item = _mapper.Map<FoundItem>(itemDTO);
-            await _foundItemService.UpdateFoundItemAsync(item);
+            await _foundItemService.UpdateAsync(item);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> RemoveFoundItem(int id)
         {
-            await _foundItemService.RemoveFoundItemAsync(id);
+            await _foundItemService.DeleteAsync(id);
             return NoContent();
         }
     }
